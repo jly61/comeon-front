@@ -7,14 +7,16 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+import axios from 'axios'
 export default {
   name: 'App',
   components: {
     HelloWorld
   },
   created () {
-
+    axios.get('/api/phpinfo').then(res => {
+      console.log('res', res)
+    })
   }
 }
 </script>
