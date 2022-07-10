@@ -1,21 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/person">Person</router-link>
+    </div>
+    <router-view/>
+    <h1>页面访问量: {{ pv }}</h1>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
-  created () {
-    axios.get('/api/phpinfo').then(res => {
-      console.log('res', res)
+  computed: {
+    ...mapState({
+      pv: state => state.pv
     })
   }
 }
@@ -29,5 +30,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
