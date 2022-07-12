@@ -46,7 +46,7 @@ jobs:
         # 此步骤中，版本发布后会返回对应的url，以供下面上传制品的步骤中读取使用
         id: create_release
         uses: actions/create-release@v1
-        # env:
+        env:
           # GITHUB_TOKEN是准备工作步骤三申请的Personal Access Token
           GITHUB_TOKEN: ${{ secrets.PERSON_ACCESS_TOKEN }}
         with:
@@ -58,7 +58,7 @@ jobs:
       - name: Update Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
-        # env:
+        env:
           GITHUB_TOKEN: ${{ secrets.PERSON_ACCESS_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
