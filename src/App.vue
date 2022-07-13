@@ -6,7 +6,7 @@
       <router-link to="/person">Person</router-link>
     </div>
     <router-view/>
-    <h1>ll页面访问量: {{ pv }}</h1>
+    <h1>lll页面访问量: {{ pv }}</h1>
   </div>
 </template>
 
