@@ -22,3 +22,7 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+![CI](https://github.com/jly61/comeon-front/actions/workflows/ci.yml/badge.svg)
+
+![CD](https://github.com/jly61/comeon-front/actions/workflows/cd.yml/badge.svg)
