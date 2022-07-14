@@ -3,14 +3,17 @@ name: Rollback
 on:
   workflow_dispatch:
     inputs:
+      # 这里的version指的是我们要部署的哪个发布版本的制品
+      # 这里输入的信息会作为github.event.inputs.version供此Workflow下的job读取
       version:
         description: "choose a version to deploy"
-          required: true
+        required: true
 
 jobs:
   Rollback:
     runs-on: ubuntu-latest
     steps:
+      # 输出我们输入的version值
       - name: Echo Version
         env:
           VERSION: ${{ github.event.inputs.version }}
