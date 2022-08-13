@@ -2,8 +2,8 @@ import VueRouter from 'vue-router'
 import Vue from 'vue'
 import Home from '@/views/Home/Home'
 import toLogin from '@/views/toLogin/ToLogin'
-import { apiGetPV } from '@/apis/common'
-import store from '../store/index'
+// import { apiGetPV } from '@/apis/common'
+// import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -20,7 +20,7 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import('../views/toLogin/ToLogin')
+    component: Home
   },
   {
     path: '/login',
