@@ -15,6 +15,7 @@ export default {
     }
   },
   created () {
+    console.log('修改nginx部署目录')
   },
   watch: {
   },
