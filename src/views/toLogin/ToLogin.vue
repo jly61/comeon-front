@@ -2,7 +2,7 @@
   <div class="to-login">
     <div class="action">
       <el-button class="btn" type="primary" @click="staffLogin">员工登录</el-button>
-      <el-button class="btn" type="primary" @click="visitorLogin">游客登录</el-button>
+<!--      <el-button class="btn" type="primary" @click="visitorLogin">游客登录</el-button>-->
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="login-vue" :style="bg">
     <div class="container">
-      <p class="title">WELCOME</p>
+      <p class="title">统一认证中心</p>
       <div class="input-c">
         <el-input prefix-icon="el-icon-loading" size="small" v-model="account" placeholder="用户名" clearable @on-blur="verifyAccount"/>
         <p class="error">{{accountError}}</p>
@@ -18,12 +18,14 @@
 </template>
 
 <script>
+  import { apiAuth, apiGetConfig } from '@/apis/common';
+
 export default {
   name: 'login',
   data () {
     return {
-      account: 'admin',
-      pwd: 'admin',
+      account: '',
+      pwd: '',
       accountError: '',
       pwdError: '',
       isShowLoading: false,
@@ -32,22 +34,17 @@ export default {
   },
   created () {
     // this.bg.backgroundImage = 'url(' + require('../../assets/imgs/bg0' + new Date().getDay() + '.jpg') + ')'
-
-
-
-
-
-
     this.bg.backgroundImage = 'url(' + require('../../assets/imgs/login_bg2.png') + ')'
+    this.getConfig()
   },
-  watch: {
-    $route: {
-      handler (route) {
-        this.redirect = route.query && route.query.redirect
-      },
-      immediate: true
-    }
-  },
+  // watch: {
+  //   $route: {
+  //     handler (route) {
+  //       this.redirect = route.query && route.query.redirect
+  //     },
+  //     immediate: true
+  //   }
+  // },
   methods: {
     verifyAccount () {
       if (this.account !== 'admin') {
@@ -63,30 +60,18 @@ export default {
         this.pwdError = ''
       }
     },
-    register () {
-
-    },
-    forgetPwd () {
-
-    },
     submit () {
-      if (this.account === 'admin' && this.pwd === 'admin') {
-        this.isShowLoading = true
-        // 登陆成功 设置用户信息
-        localStorage.setItem('userImg', 'https://avatars3.githubusercontent.com/u/22117876?s=460&v=4')
-        localStorage.setItem('userName', '小明')
-        // 登陆成功 假设这里是后台返回的 token
-        localStorage.setItem('token', 'i_am_token')
-        this.$router.push({ path: this.redirect || '/' })
-      } else {
-        if (this.account !== 'admin') {
-          this.accountError = '账号为admin'
+    },
+    getConfig () {
+      apiGetConfig().then(res => {
+        console.log('res', res)
+        if (res.data.status === 0) {
+          const { values } = res.data
+          console.log(values)
+          apiAuth(values).then(res => {
+          })
         }
-
-        if (this.pwd !== 'admin') {
-          this.pwdError = '密码为admin'
-        }
-      }
+      })
     }
   }
 }

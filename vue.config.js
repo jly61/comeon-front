@@ -4,7 +4,7 @@ module.exports = defineConfig({
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://47.105.106.78',
+        target: 'http://120.77.98.154/',
         changeOrigin: true, // 虚拟的站点需要更管origin
         pathRewrite: {
           '^/api': ''
